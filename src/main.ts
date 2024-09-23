@@ -5,7 +5,7 @@ class Task {
 
 // Get references to DOM elements
 const taskInput = document.getElementById("input-task") as HTMLInputElement;
-const addTaskButton = document.getElementById("add-task") as HTMLButtonElement;
+const addTaskButton = document.getElementById("add-btn") as HTMLButtonElement;
 const taskList = document.getElementById("list") as HTMLUListElement;
 
 // Array to store tasks
@@ -26,9 +26,13 @@ addTaskButton.addEventListener("click", () => {
 // Function to display tasks in the list
 function displayTasks() {
   taskList.innerHTML = ""; // Clear previous tasks
-
+  let item = "";
   tasks.forEach((task) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = task.title;
-  });
+   item +=`<div class="task-item">  
+                    <span class="task-text">${task.title}</span>  
+                    <button class="edit-button"><i class="far fa-edit fa-xs"></i></button>  
+                    <button class="delete-button"><i class="fa-regular fa-trash-can"></i></button>  
+                </div>  `
+              });
+              taskList.innerHTML = (item);
 }
